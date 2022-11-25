@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Result, { ResultType } from './components/Result/Result';
+import Search from './components/search/Search';
 
-function App() {
+const App: React.FC = () => {
+  const [searchResult, setSearchResult] = useState('');
+  const [result, setResult] = useState<ResultType[]>([]);
+
+  useEffect(() => {
+    fetch(`https://api.tvmaze.com/search/shows?q=${searchResult}`)
+      .then((response) => response.json())
+      .then((data) => setResult(data));
+  }, [searchResult]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='App'>
+      <header className='App-header'>
+        <Search setSearchResult={setSearchResult} />
+        <Result result={result} />
       </header>
     </div>
   );
-}
+};
 
 export default App;

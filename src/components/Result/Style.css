@@ -1,0 +1,25 @@
+.Result {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin-bottom: 20px;
+  background-color: #090811;
+  border-radius: 20px;
+  padding: 0 20px 20px 20px;
+  margin-top: 20px;
+}
+
+.Image {
+  height: 400px;
+  width: 300px;
+  margin: auto;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+progress {
+  max-width: 400px;
+  margin: auto;
+}
